@@ -1,0 +1,36 @@
+const bookObj=[
+    {
+        name:"A",
+        imgUrl:"money",
+        category:"Fiction",
+        author:"money",
+        price:"180",
+        releaseYear:1949
+    },
+    {
+        name:"B",
+        imgUrl:"money",
+        category:"Myticism",
+        author:"amulya",
+        price:"180",
+        releaseYear:1949
+    },
+    {
+        name:"C",
+        imgUrl:"money",
+        category:"Non-Fiction",
+        author:"singh",
+        price:"180",
+        releaseYear:1949
+    },
+    {
+        name:"D",
+        imgUrl:"money",
+        category:"Fiction",
+        author:"money",
+        price:"180",
+        releaseYear:1949
+    }
+];
+
+module.exports=bookObj;
