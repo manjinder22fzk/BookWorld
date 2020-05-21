@@ -1,35 +1,51 @@
 const bookObj=[
     {
-        name:"A",
+        name:"1984",
         imgUrl:"money",
-        category:"Fiction",
-        author:"money",
+        category:"Dystopia",
+        author:"George Orewell",
         price:"180",
         releaseYear:1949
     },
     {
-        name:"B",
+        name:"Era of Darkness",
         imgUrl:"money",
-        category:"Myticism",
-        author:"amulya",
-        price:"180",
-        releaseYear:1949
+        category:"history",
+        author:"Shashi Tharoor",
+        price:"300",
+        releaseYear:2013
     },
     {
-        name:"C",
+        name:"Manufacturing Consent",
         imgUrl:"money",
         category:"Non-Fiction",
-        author:"singh",
-        price:"180",
-        releaseYear:1949
+        author:"Noam Chomsky",
+        price:"220",
+        releaseYear:2007
     },
     {
-        name:"D",
+        name:"Sapeins",
+        imgUrl:"money",
+        category:"history",
+        author:"Yuval Noah Harari",
+        price:"180",
+        releaseYear:2014
+    },
+    {
+        name:"21 Lessons for 21st Century",
         imgUrl:"money",
         category:"Fiction",
-        author:"money",
+        author:"Yuval Noah Harari",
         price:"180",
-        releaseYear:1949
+        releaseYear:2016
+    },
+    {
+        name:"Home Deus",
+        imgUrl:"money",
+        category:"Fiction",
+        author:"Yuval Noah Harari",
+        price:"180",
+        releaseYear:2018
     }
 ];
 

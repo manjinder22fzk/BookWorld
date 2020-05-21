@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-4" *ngFor="let book of books">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="book.imgUrl" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.name}}</h5>
+          <p class="card-text">Category -{{book.category}}</p>
+          <p class="card-text">Price -{{book.price}}</p>
+          <a href="#" class="btn btn-primary">Buy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
