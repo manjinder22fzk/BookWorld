@@ -2,23 +2,24 @@ const express= require('express')
 const bodyParser=require('body-parser')
 const bookRouter=express.Router();
 const Books=require('../models/books')
-const bookObj=require('../assets/bookObj');
 
 bookRouter.use(bodyParser.json());
 
-bookRouter.use((req,res,next)=>{
-    Books.deleteMany({}).then(out=>{
-        Books.create(bookObj).then(data=>{
-            next();
-        });
-    });
-})
 
 bookRouter.get('/',(req,res)=>{
     Books.find({}).then(books=>{
         res.statusCode=200;
         res.setHeader('Content-Type','applications/json');
         res.json(books);        
+    },err=>{err=>next(err)})
+    .catch(err=>{next(err)})
+})
+
+bookRouter.get('/authors',(req,res)=>{
+    Books.distinct("author").then(authors=>{
+        res.statusCode=200;
+        res.setHeader('Content-Type','applications/json');
+        res.json(authors);
     },err=>{err=>next(err)})
     .catch(err=>{next(err)})
 })
@@ -30,6 +31,15 @@ bookRouter.get('/authors/:author',(req,res)=>{
         res.json(books);
     },err=>{next(err)})
     .catch(err=>next(err))
+})
+
+bookRouter.get('/categories',(req,res)=>{
+    Books.distinct("category").then(categories=>{
+        res.statusCode=200;
+        res.setHeader('Content-Type','applications/json');
+        res.json(categories);
+    },err=>{err=>next(err)})
+    .catch(err=>{next(err)})
 })
 
 bookRouter.get('/categories/:category',(req,res)=>{

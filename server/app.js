@@ -5,6 +5,7 @@ const mongoose=require('mongoose')
 const morgan =require('morgan')
 const bodyParser=require('body-parser');
 const BookRouter=require('./routes/bookRouter');
+const UserRouter=require('./routes/userRouter');
 
 const url = 'mongodb://localhost:27017/books';
 const connect = mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true });
@@ -26,9 +27,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/books',BookRouter)
-
-
-
+app.use('/users',UserRouter)
 
 
 const server = http.createServer(app);

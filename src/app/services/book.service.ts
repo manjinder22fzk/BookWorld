@@ -13,4 +13,18 @@ export class BookService {
   getBooks():Observable<Book[]>{
     return this.http.get<Book[]>(this.url);
   }
+
+  getAuthors():Observable<string[]>{
+    return this.http.get<string[]>(this.url+"/authors")
+  }
+  getBooksbyAuthor(author:string):Observable<Book[]>{
+    return this.http.get<Book[]>(this.url+"/authors/"+author);
+  }
+
+  getCategories():Observable<any[]>{
+    return this.http.get<any[]>(this.url+"/categories")
+  }
+  getBooksbyCategory(category:string):Observable<Book[]>{
+    return this.http.get<Book[]>(this.url+"/categories/"+category);
+  }
 }

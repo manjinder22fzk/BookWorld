@@ -2,36 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-var bookSchema = new Schema({
+var userSchema = new Schema({
     name:  {
         type: String,
         required: true
     },
-    category:{
+    password:{
         type:String,
         required:true
     },
-    imgUrl:  {
+    contact:  {
         type: String,
         required: true
     },
-    author:  {
+    email:  {
         type: String,
         required: true
-    },
-    price:{
-        type:String,
-        required:true
-    },
-    releaseYear:{
-        type:Number,
-        required:true
     }
 }, {
     timestamps: true
 });
 
 
-var Books = mongoose.model('Book', bookSchema,"Book");
+var Users = mongoose.model('User', userSchema,"User");
 
-module.exports = Books;
+module.exports = Users;
