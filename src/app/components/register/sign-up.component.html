@@ -4,11 +4,11 @@
 
 
     <div class="form-group">
-      <label>Username</label>
+      <label>Name</label>
       <input type="text" class="form-control" formControlName="name" id="name">
       <div *ngIf="registerForm.controls.name.invalid && (registerForm.controls.name.dirty ||registerForm.controls.name.touched)"class="alert alert-danger">
         <div *ngIf="registerForm.controls.name.errors.required">
-          Username is required.
+          Name is required.
         </div>
         <!-- <div *ngIf="name.errors.minlength">
           Name must be at least 4 characters long.
@@ -31,11 +31,11 @@
       </div>
 
         <div class="form-group">
-          <label>Contact</label>
-          <input type="text" class="form-control" formControlName="contact" id="contact">
-          <div *ngIf="registerForm.controls.contact.invalid && (registerForm.controls.contact.dirty || registerForm.controls.contact.touched)"class="alert alert-danger">
-            <div *ngIf="registerForm.controls.contact.errors.required">
-              Contact is required.
+          <label>Username</label>
+          <input type="text" class="form-control" formControlName="username" id="username">
+          <div *ngIf="registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)"class="alert alert-danger">
+            <div *ngIf="registerForm.controls.username.errors.required">
+              Username is required.
             </div>
             <!-- <div *ngIf="name.errors.minlength">
               Name must be at least 4 characters long.
@@ -56,6 +56,6 @@
             </div>
           </div>  
     
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Submit</button>
   </form>
 </div>

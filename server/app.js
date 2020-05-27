@@ -1,36 +1,45 @@
 const express =require('express');
-const app=express();
-http=require('http');
-const mongoose=require('mongoose')
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const morgan =require('morgan')
-const bodyParser=require('body-parser');
-const BookRouter=require('./routes/bookRouter');
-const UserRouter=require('./routes/userRouter');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const config = require('./config/database');
+const BookRouter=require('./routes/books');
+const UserRouter=require('./routes/users');
 
-const url = 'mongodb://localhost:27017/books';
-const connect = mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin","*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin,X-Requested-With,Content-Type,Accept"
-    );
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET,POST,PUT,PATCH,DELETE,OPTIONS"
-    );
-    next()
+mongoose.connect(config.database,{useUnifiedTopology:true,useNewUrlParser:true} );
+// On Connection
+mongoose.connection.on('connected', () => {
+    console.log('Connected to Database '+config.database);
+});
+// On Error
+mongoose.connection.on('error', (err) => {
+    console.log('Database error '+err);
 });
 
+const app = express();
+const port = process.env.PORT || 3000;
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use('/books',BookRouter)
 app.use('/users',UserRouter)
 
 
-const server = http.createServer(app);
-server.listen(3000,()=>{
-    console.log("Serve is Listening at Port 3000");
+app.get('/', (req, res) => {
+    res.send('invaild endpoint');
+});
+
+// Start Server
+app.listen(port, () => {
+    console.log('Server started on port '+port);
 });

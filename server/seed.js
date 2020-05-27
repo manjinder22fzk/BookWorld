@@ -7,7 +7,7 @@ const db='mongodb://localhost:27017/books'
 seeder.connect(db , ()=>{
     seeder.loadModels([
         'models/books',
-        'models/users'
+        'models/user'
     ]);
     seeder.clearModels(['Book','User'] , ()=>{
         seeder.populateModels(data , ()=>{
@@ -27,13 +27,13 @@ const data=[
             {
                 name:'Money',
                 password:'money1996',
-                contact:'9988981689',
+                username:'money_singh',
                 email:'manjindersinghfzk@gmail.com'
             },
             {
-                name:'Singh',
+                name:'Abhishek',
                 password:'singh1996',
-                contact:'9988981689',
+                username:'abhi_singh',
                 email:'singhfzk@gmail.com'
             }
         ]

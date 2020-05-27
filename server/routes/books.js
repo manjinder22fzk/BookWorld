@@ -2,6 +2,7 @@ const express= require('express')
 const bodyParser=require('body-parser')
 const bookRouter=express.Router();
 const Books=require('../models/books')
+const passport = require('passport');
 
 bookRouter.use(bodyParser.json());
 
@@ -51,6 +52,9 @@ bookRouter.get('/categories/:category',(req,res)=>{
     .catch(err=>next(err))
 })
 
+bookRouter.get('/buy/:name',passport.authenticate('jwt', {session:false}),(req,res,next)=>{
+    res.status(201).json({buy:"You want to buy "+req.params.name});
+});
 
 module.exports=bookRouter;
 
